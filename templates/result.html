@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adjective Generator - Result</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: lightblue;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        a:hover {
+            color: lightcyan;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, {{ name }}!</h1>
+    <p>You are {{ adjectives[0] }}, {{ adjectives[1] }}, {{ adjectives[2] }}, {{ adjectives[3] }}, and {{ adjectives[4] }}.</p>
+    <a href="/">Go back</a>
+</body>
+</html>

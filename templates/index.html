@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adjective Generator</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label, input {
+            margin: 10px;
+        }
+
+        img.top-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100px;
+            width:200px;
+        }
+
+        img.top-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        img.bottom-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        img.bottom-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        @keyframes buttonAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Apply the animation to the button on hover */
+        input[type="submit"]:hover {
+            animation: buttonAnimation 0.5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <img src="static\EncodeFullLogo.jpeg" class="top-left" alt="Top Left Image">
+    <!-- <img src="path/to/top-right-image.png" class="top-right" alt="Top Right Image"> -->
+    
+    <h1>Adjective Generator</h1>
+    <form method="POST" action="/">
+        <label for="name">Enter your name:</label>
+        <input type="text" name="name" required>
+        <br>
+        <input type="submit" value="Generate Adjectives">
+    </form>
+</body>
+</html>
