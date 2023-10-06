@@ -4,7 +4,7 @@
     <title>Adjective Generator</title>
     <style>
         body {
-            background-color: black;
+            background-image: linear-gradient(to right top, #093705, #165f1b, #1f8b33, #21ba4e, #12eb6d);
             color: white;
             display: flex;
             flex-direction: column;
@@ -14,8 +14,16 @@
             margin: 0;
         }
 
+        .card {
+            background-color: #111111; /* Dark background color for the card */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow to the card */
+        }
+
         h1 {
             text-align: center;
+            font-size: 32px; /* Increase font size */
         }
 
         form {
@@ -26,55 +34,102 @@
 
         label, input {
             margin: 10px;
+            font-size: 18px; /* Increase font size */
         }
 
-        img.top-left {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100px;
-            width:200px;
+        input[type="text"] {
+            padding: 8px;
+            border: 2px solid white;
+            border-radius: 5px;
+            background-color: transparent;
+            color: white;
         }
 
-        img.top-right {
-            position: absolute;
-            top: 0;
-            right: 0;
+        input[type="text"]:hover {
+            background-color: #333; /* Add hover effect */
         }
 
-        img.bottom-left {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #00e131;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px; /* Increase font size */
+            font-weight: bold;
         }
 
-        img.bottom-right {
-            position: absolute;
-            bottom: 0;
-            right: 0;
+        input[type="submit"]:hover {
+            animation: buttonAnimation 0.5s ease-in-out infinite;
         }
+
         @keyframes buttonAnimation {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
 
-        /* Apply the animation to the button on hover */
-        input[type="submit"]:hover {
-            animation: buttonAnimation 0.5s ease-in-out infinite;
+        img.top-center {
+            display: block;
+            margin: 0 auto; /* Center the image horizontally */
+            height: 50px;
+            width: 50px;
+            padding: 0px;
+        }
+
+        .loading-container {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            z-index: 9999; /* Ensure it's on top of other content */
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #fff;
+            border-top: 4px solid #0073e6; /* Use your button's color */
+            border-radius: 50%;
+            animation: spin 5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <img src="static\EncodeFullLogo.jpeg" class="top-left" alt="Top Left Image">
-    <!-- <img src="path/to/top-right-image.png" class="top-right" alt="Top Right Image"> -->
+    <div class="card">
+        <img src="static\logo_encode_nobg.png" class="top-center" alt="Image">
+        <h1>DescribeMeister</h1>
+        <form method="POST" action="/">
+            <label for="name">Enter your name:</label>
+            <input type="text" name="name" required>
+            <br>
+            <input type="submit" value="Generate Message">
+        </form>
+    </div>
+    <div class="loading-container" id="loadingContainer">
+        <div class="loading-spinner"></div>
+    </div>
+    <script>
+        // Get the loading container element
+        const loadingContainer = document.getElementById('loadingContainer');
     
-    <h1>Adjective Generator</h1>
-    <form method="POST" action="/">
-        <label for="name">Enter your name:</label>
-        <input type="text" name="name" required>
-        <br>
-        <input type="submit" value="Generate Adjectives">
-    </form>
+        // Add an event listener to the form submission
+        document.querySelector('form').addEventListener('submit', function () {
+            // Show the loading container when the form is submitted
+            loadingContainer.style.display = 'flex';
+        });
+    </script>
 </body>
 </html>
